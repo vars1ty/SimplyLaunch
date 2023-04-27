@@ -29,7 +29,7 @@ impl API {
         // Thank you Johan.
         std::process::Command::new("./SSOClient.exe")
             .args([
-                "-Language=en",
+                &format!("-Language={language}"),
                 &format!("-NetworkUserId={}", auth_response.user_id),
                 "-MetricsServer=https://metrics.starstable.com/metric/v1/metrics",
                 "-MetricsGroup=[1]",
