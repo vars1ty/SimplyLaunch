@@ -1,12 +1,12 @@
 use crate::endpoints;
 
 /// Implementation of the `launcher-proxy` API.
-pub struct API<'a> {
+pub struct API {
     /// User Email.
-    email: &'a str,
+    email: String,
 
     /// User Password.
-    password: &'a str,
+    password: String,
 }
 
 /// Auth response.
@@ -22,7 +22,7 @@ pub struct AuthResponse {
     queue_token: String,
 }
 
-impl API<'_> {
+impl API {
     pub fn launch_game(auth_response: AuthResponse) {
         if !std::path::Path::new("./SSOClient.exe").exists() {
             panic!("[ERROR] No 'SSOClient.exe' is present. Make sure that this executable is located within the 'client' directory!")
@@ -52,7 +52,7 @@ impl API<'_> {
     /// A structure containing the User ID and Launcher Hash.
     /// Panics if the API `success` value is false, or if there's an error with retrieving/sending
     /// data.
-    pub fn login(email: &str, password: &str) -> AuthResponse {
+    pub fn login(email: String, password: String) -> AuthResponse {
         let json = json::object! {
             username: email,
             password: password,
