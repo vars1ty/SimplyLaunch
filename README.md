@@ -15,6 +15,8 @@ Because I don't want to sit and wait for their horrible pasta-coded launcher tak
 
 In conclusion; their launcher is a bloated, slow and utter mess. Just extract the asar and check for yourself, I'd be surprised if you came back with any sanity left.
 
+Oh and Linux. Just use the normal launcher to download the game/update it and then this. Less headaches from dealing with the incompetent company's own stuff.
+
 ## Does it implement everything the actual launcher has?
 No, not even close to it.
 
