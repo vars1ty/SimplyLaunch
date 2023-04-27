@@ -1,16 +1,9 @@
 use crate::endpoints;
 
 /// Implementation of the `launcher-proxy` API.
-pub struct API {
-    /// User Email.
-    email: String,
-
-    /// User Password.
-    password: String,
-}
+pub struct API;
 
 /// Auth response.
-#[derive(Debug)]
 pub struct AuthResponse {
     /// The users Account ID.
     user_id: String,
@@ -23,13 +16,15 @@ pub struct AuthResponse {
 }
 
 impl API {
-    pub fn launch_game(auth_response: AuthResponse) {
+    /// Launches the game using the given auth response.
+    pub fn launch_game(auth_response: AuthResponse, language: String) {
         if !std::path::Path::new("./SSOClient.exe").exists() {
             panic!("[ERROR] No 'SSOClient.exe' is present. Make sure that this executable is located within the 'client' directory!")
         }
 
         let current_directory = std::env::current_dir().expect("[ERROR] Failed retrieving path!");
         let current_directory = current_directory.to_string_lossy();
+
         // Save me from this horrible way of passing arguments.
         // Thank you Johan.
         std::process::Command::new("./SSOClient.exe")
@@ -52,6 +47,7 @@ impl API {
     /// A structure containing the User ID and Launcher Hash.
     /// Panics if the API `success` value is false, or if there's an error with retrieving/sending
     /// data.
+    #[inline(always)]
     pub fn login(email: String, password: String) -> AuthResponse {
         let json = json::object! {
             username: email,
@@ -102,6 +98,7 @@ impl API {
     /// A `String` containing the token.
     /// Panics if the API `success` value is `false`, or there's an error with retrieving/sending
     /// data.
+    #[inline(always)]
     fn get_queue_token(launcher_hash: String, client: reqwest::blocking::Client) -> String {
         let json = json::object! {
             launcher_hash: launcher_hash

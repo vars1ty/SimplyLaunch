@@ -27,4 +27,4 @@ pub const AUTH_QUEUE_CREATE: &str = "https://launcher-proxy.starstable.com/launc
 pub const LAUNCHER_PROXY: &str = "https://launcher-proxy.starstable.com";
 
 /// User Agent retrieved via `navigator.userAgent`.
-pub const USER_AGENT: &str = "'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) StarStableOnline/2.18.0 Chrome/104.0.5112.124 Electron/20.3.8 Safari/537.36'";
+pub const USER_AGENT: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) StarStableOnline/2.18.0 Chrome/104.0.5112.124 Electron/20.3.8 Safari/537.36";
